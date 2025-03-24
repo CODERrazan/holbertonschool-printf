@@ -25,14 +25,20 @@ int main(void)
     len2 = printf("Percent: [%%]\n");
     printf("Lengths: _printf: %d, printf: %d\n", len1, len2);
 
-    
+    /* Test %d with positive integers */
+    len1 = _printf("Positive number: [%d]\n", 12345);
+    len2 = printf("Positive number: [%d]\n", 12345);
+    printf("Lengths: _printf: %d, printf: %d\n", len1, len2);
 
-len1 = _printf("Unknown specifier: [%r]\n");
-len2 = printf("Unknown specifier: [%s]\n", "(unsupported)");
-printf("Lengths: _printf: %d, printf: %d\n", len1, len2);
+    /* Test %i with negative integers */
+    len1 = _printf("Negative number: [%i]\n", -12345);
+    len2 = printf("Negative number: [%i]\n", -12345);
+    printf("Lengths: _printf: %d, printf: %d\n", len1, len2);
 
-
-   
+    /* Test %d with zero */
+    len1 = _printf("Zero: [%d]\n", 0);
+    len2 = printf("Zero: [%d]\n", 0);
+    printf("Lengths: _printf: %d, printf: %d\n", len1, len2);
 
     return (0);
 }
