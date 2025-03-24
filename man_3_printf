@@ -1,0 +1,31 @@
+.TH _PRINTF 3 "March 2025" "Holberton School" "Custom Functions"
+.SH NAME
+_printf \- formats and prints data
+
+.SH SYNOPSIS
+.B #include <main.h>
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The \fB_printf\fP function prints data to standard output based on the \fIformat\fP string provided.
+
+Supported format specifiers:
+.TP
+\fB%c\fP - Prints a character.
+.TP
+\fB%s\fP - Prints a string.
+.TP
+\fB%d\fP, \fB%i\fP - Prints a signed integer.
+.TP
+\fB%%\fP - Prints a percent sign.
+
+Characters outside specifiers are printed as-is.
+
+.SH RETURN VALUE
+Returns the number of characters printed or -1 on error.
+
+.SH EXAMPLES
+_printf("Character: %c, String: %s, Integer: %d%%\n", 'A', "Hello", 42);
+
+.SH AUTHOR
+ Holberton School
