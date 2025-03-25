@@ -47,7 +47,28 @@ return (write(1, "%", 1));
 int print_number_recursive(unsigned int n)
 {
 int count = 0;
-if (n < 0) /* Handle negative numbers */
+
+if (n / 10)
+count += print_number_recursive(n / 10);
+
+count += write(1, &"0123456789"[n % 10], 1);
+
+return (count);
+}
+
+/**
+* print_number - Prints an integer.
+* @args: The argument list containing the integer.
+*
+* Return: Number of characters printed.
+*/
+int print_number(va_list args)
+{
+int n = va_arg(args, int);
+unsigned int num;
+int count = 0;
+
+if (n < 0)
 {
 count += write(1, "-", 1);
 num = -n;
@@ -60,6 +81,7 @@ num = n;
 count += print_number_recursive(num);
 return (count);
 }
+
 /**
 * _printf - Produces output according to a format.
 * @format: A character string containing directives.
