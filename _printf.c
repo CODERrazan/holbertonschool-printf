@@ -111,6 +111,11 @@ else if (*format == '%')
 count += print_percent();
 else if (*format == 'd' || *format == 'i')
 count += print_number(args);
+else if (*format == 'b')
+{
+    unsigned int num = va_arg(args, unsigned int);
+    count += print_binary(num);
+}
 else
 {
 count += write(1, "%", 1);
