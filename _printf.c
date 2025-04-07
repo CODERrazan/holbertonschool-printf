@@ -140,7 +140,7 @@ else if (*format == 'o')
 else if (*format == 'x')
 	count += convert_base(va_arg(args, unsigned int), 16, 0, flag_hash);
 else if (*format == 'X')
-	count += convert_base(va_arg(args, unsigned int), 16, 1, flag_hash);$
+	count += convert_base(va_arg(args, unsigned int), 16, 1, flag_hash);
 else if (*format == 'p')
 {
     void *ptr = va_arg(args, void *);
