@@ -8,6 +8,7 @@
 int print_number_int(int n)
 {
     int count = 0;
+    char digits[] = "0123456789";
 
     if (n < 0)
     {
@@ -18,6 +19,6 @@ int print_number_int(int n)
     if (n / 10)
         count += print_number_int(n / 10);
 
-    count += write(1, &((char[]){"0123456789"}[n % 10]), 1);
+    count += write(1, &digits[n % 10], 1);
     return (count);
 }
