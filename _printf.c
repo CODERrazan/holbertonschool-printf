@@ -129,6 +129,11 @@ else if (*format == 'x')
 	count += convert_base(va_arg(args, unsigned int), 16, 0);
 else if (*format == 'X')
 	count += convert_base(va_arg(args, unsigned int), 16, 1);
+else if (*format == 'p')
+{
+    void *ptr = va_arg(args, void *);
+    count += print_pointer(ptr);
+}
 else
 {
 count += write(1, "%", 1);
