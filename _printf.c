@@ -107,6 +107,11 @@ if (*format == 'c')
 count += print_char(args);
 else if (*format == 's')
 count += print_string(args);
+else if (*format == 'S')
+{
+    char *str = va_arg(args, char *);
+    count += print_custom_string(str);
+}
 else if (*format == '%')
 count += print_percent();
 else if (*format == 'd' || *format == 'i')
