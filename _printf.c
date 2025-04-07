@@ -117,10 +117,13 @@ else if (*format == 'b')
     count += print_binary(num);
 }
 else if (*format == 'u')
-{
-	unsigned int num = va_arg(args, unsigned int);
-	count += print_unsigned(num);
-}
+	count += convert_base(va_arg(args, unsigned int), 10, 0);
+else if (*format == 'o')
+	count += convert_base(va_arg(args, unsigned int), 8, 0);
+else if (*format == 'x')
+	count += convert_base(va_arg(args, unsigned int), 16, 0);
+else if (*format == 'X')
+	count += convert_base(va_arg(args, unsigned int), 16, 1);
 else
 {
 count += write(1, "%", 1);
