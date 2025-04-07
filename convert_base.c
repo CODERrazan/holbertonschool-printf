@@ -7,7 +7,7 @@
  * @uppercase: If true, use A-F for hex; else a-f
  * Return: Number of characters printed
  */
-int convert_base(unsigned int n, int base, int uppercase)
+int convert_base(unsigned int n, int base, int uppercase, int hash_flag)
 {
 	char buffer[50];
 	char *digits;
@@ -26,6 +26,15 @@ int convert_base(unsigned int n, int base, int uppercase)
 
 	while (i--)
 		count += write(1, &buffer[i], 1);
+	if (hash_flag)
+{
+	if (base == 8)
+		write(1, "0", 1);
+	else if (base == 16 && uppercase)
+		write(1, "0X", 2);
+	else if (base == 16 && !uppercase)
+		write(1, "0x", 2);
+}
 
 	return (count);
 }

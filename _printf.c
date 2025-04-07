@@ -101,8 +101,20 @@ while (*format)
 if (*format == '%') /* Format specifier detected */
 {
 format++;
-if (!*format)
-return (-1);
+    int flag_plus = 0, flag_space = 0, flag_hash = 0;
+
+    while (*format == '+' || *format == ' ' || *format == '#')
+    {
+        if (*format == '+')
+            flag_plus = 1;
+        else if (*format == ' ')
+            flag_space = 1;
+        else if (*format == '#')
+            flag_hash = 1;
+        format++;
+    }
+    if (!*format)
+        return (-1);
 if (*format == 'c')
 count += print_char(args);
 else if (*format == 's')
@@ -115,20 +127,20 @@ else if (*format == 'S')
 else if (*format == '%')
 count += print_percent();
 else if (*format == 'd' || *format == 'i')
-count += print_number(args);
+count += print_number_with_flags(args, flag_plus, flag_space);
 else if (*format == 'b')
 {
     unsigned int num = va_arg(args, unsigned int);
     count += print_binary(num);
 }
 else if (*format == 'u')
-	count += convert_base(va_arg(args, unsigned int), 10, 0);
+	count += convert_base(va_arg(args, unsigned int), 10, 0, flag_hash);
 else if (*format == 'o')
-	count += convert_base(va_arg(args, unsigned int), 8, 0);
+	count += convert_base(va_arg(args, unsigned int), 8, 0, flag_hash);
 else if (*format == 'x')
-	count += convert_base(va_arg(args, unsigned int), 16, 0);
+	count += convert_base(va_arg(args, unsigned int), 16, 0, flag_hash);
 else if (*format == 'X')
-	count += convert_base(va_arg(args, unsigned int), 16, 1);
+	count += convert_base(va_arg(args, unsigned int), 16, 1, flag_hash);$
 else if (*format == 'p')
 {
     void *ptr = va_arg(args, void *);
