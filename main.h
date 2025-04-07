@@ -8,7 +8,6 @@
 int _printf(const char *format, ...);
 int print_binary(unsigned int n);
 int print_unsigned(unsigned int n);
-int convert_base(unsigned int n, int base, int uppercase);
 int print_custom_string(char *str);
 int print_pointer(void *ptr);
 int print_number_with_flags(va_list args, int plus, int space);

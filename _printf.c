@@ -100,8 +100,8 @@ while (*format)
 {
 if (*format == '%') /* Format specifier detected */
 {
+	int flag_plus = 0, flag_space = 0, flag_hash = 0;
 format++;
-    int flag_plus = 0, flag_space = 0, flag_hash = 0;
 
     while (*format == '+' || *format == ' ' || *format == '#')
     {
