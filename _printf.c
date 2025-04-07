@@ -116,6 +116,11 @@ else if (*format == 'b')
     unsigned int num = va_arg(args, unsigned int);
     count += print_binary(num);
 }
+else if (*format == 'u')
+{
+	unsigned int num = va_arg(args, unsigned int);
+	count += print_unsigned(num);
+}
 else
 {
 count += write(1, "%", 1);
